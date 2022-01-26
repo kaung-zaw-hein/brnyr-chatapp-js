@@ -253,8 +253,8 @@ body {
 }
 
 .message_left_paragraph {
-  background: #ffffff;
-  border: 1px solid #d5deeb;
+  background: #FFFA65;
+  border: 1px solid ;
   border-radius: 8px 8px 8px 0px;
   padding: 20px 13px;
   color: #545c68;
@@ -268,8 +268,8 @@ body {
 }
 
 .message_right_paragraph {
-  background: linear-gradient(168.68deg, #000000 1.12%, #0a91db 100%);
-  border: 1px solid #d5deeb;
+  background: #3D3D3D;
+  border: 1px solid ;
   border-radius: 8px 8px 8px 0px;
   padding: 20px 13px;
   color: #ffffff;
