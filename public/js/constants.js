@@ -6,14 +6,20 @@ export const callType = {
 };
 
 export const preOfferAnswer = {
-  CALLEE_NOT_FOUND: "CALLEE_NOT_FOUND",
-  CALL_ACCEPTED: "CALL_ACCEPTED",
-  CALL_REJECTED: "CALL_REJECTED",
-  CALL_UNAVAILABLE: "CALL_UNAVAILABLE",
+  CALLEE_NOT_FOUND: "NOT_FOUND",
+  CALL_ACCEPTED: "ACCEPTED",
+  CALL_REJECTED: "REJECTED",
+  CALL_UNAVAILABLE: "BUSY",
 };
 
 export const webRTCSignaling = {
-  OFFER: "OFFER",
-  ANSWER: "ANSWER",
-  ICE_CANDIDATE: "ICE_CANDIDATE",
+  OFFER: "offer",
+  ANSWER: "asnwer",
+  ICE_CANDIDATE: "ice-candidate ",
 };
+
+export const callState = {
+  CALL_AVALIABLE: "avaliable",
+  CALL_UNAVAILABLE: "Unavaliable",
+  CALL_AVALIABLE_ONLY_CHAT: "Chat Only"
+}

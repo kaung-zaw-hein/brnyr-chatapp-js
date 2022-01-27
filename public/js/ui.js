@@ -17,6 +17,13 @@ export const updateLocalVideo = (stream) => {
   });
 };
 
+export const showVideoVallButtons = () => {
+  const personalCodeVideoButton = document.getElementById('personal_code_video_button');
+  const strangerVideoButton = document.getElementById('stranger_video_button');
+  showElement(personalCodeVideoButton);
+  showElement(strangerVideoButton)
+}
+
 export const updateRemoteVideo = (stream) => {
   const remoteVideo = document.getElementById("remote_video");
   remoteVideo.srcObject = stream;
@@ -59,13 +66,13 @@ export const showInfoDialog = (preOfferAnswer) => {
   if (preOfferAnswer === constants.preOfferAnswer.CALL_REJECTED) {
     infoDialog = elements.getInfoDialog(
       "Call rejected",
-      "Callee rejected your call"
+      "rejected your call"
     );
   }
 
   if (preOfferAnswer === constants.preOfferAnswer.CALLEE_NOT_FOUND) {
     infoDialog = elements.getInfoDialog(
-      "Callee not found",
+      " not found",
       "Please check personal code"
     );
   }
@@ -73,7 +80,7 @@ export const showInfoDialog = (preOfferAnswer) => {
   if (preOfferAnswer === constants.preOfferAnswer.CALL_UNAVAILABLE) {
     infoDialog = elements.getInfoDialog(
       "Call is not possible",
-      "Probably callee is busy. Please try againg later"
+      "Busy. Please try againg later"
     );
   }
 
@@ -197,6 +204,46 @@ export const switchRecordingButtons = (switchForResumeButton = false) => {
   }
 };
 
+//ui after hanged up
+export const updateUIAfterHangUp = (callType) => {
+  enableDashboard();
+
+  if(callType === constants.callType.VIDEO_PERSONAL_CODE || 
+    callType === constants.callType.VIDEO_STRANGER){
+     const callButtons = document.getElementById('call_buttons');
+     hideElement(callButtons); 
+    }else{
+      const chatCallButtons = document.getElementById(
+        'finish_chat_button_container');
+      hideElement(chatCallButtons);
+    }
+    const newMessageInput = document.getElementById('new_message');
+    hideElement(newMessageInput);
+    clearMessenger();
+
+    updateMicButton(false);
+    updateCameraButton(false);
+
+    //hide remote video and show placeholder
+    
+    const remote_video = document.getElementById('remote_video');
+    hideElement(remote_video);
+
+    const placeholder = document.getElementById('video_placeholder');
+    showElement(placeholder);
+
+    removeAllDialogs();
+};
+
+//changing status of checkbox
+export const updateStrangerCheckbox = (allowConnections) => {
+  const checkboxCheckImg = document.getElementById('allow_strangers_checkbox_image');
+
+  allowConnections
+    ? showElement(checkboxCheckImg)
+    :hideElement(checkboxCheckImg);
+}
+
 // ui helper functions
 
 const enableDashboard = () => {
@@ -224,3 +271,4 @@ const showElement = (element) => {
     element.classList.remove("display_none");
   }
 };
+
